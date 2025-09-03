@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nextcloud:
+    image: nextcloud
+    volumes:
+      - nextcloud_data/file_location
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  minecraft:
+    image: minecraft
+    volumes:
+      - minecraft_data/file_location
+    environment:
+      EULA: "TRUE"
+      MEMORY: "4G"
+    ports:
+      - "25565:25565"
+    restart: unless-stopped
